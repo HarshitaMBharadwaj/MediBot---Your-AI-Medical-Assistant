@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MEDIBOT - Your Personal AI Assistant</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        #chat-box { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
+        #user-input { width: 80%; padding: 10px; }
+        #send-btn { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>MEDIBOT - Your Personal AI Assistant</h1>
+    <div id="chat-box">
+        <!-- Chat messages will appear here -->
+    </div>
+    <input type="text" id="user-input" placeholder="How can I help you ?" />
+    <button id="send-btn">Send</button>
+
+    <script>
+        document.getElementById('send-btn').addEventListener('click', function() {
+            const msg = document.getElementById('user-input').value;
+            if (msg.trim() === "") return;
+
+            // Display user's message
+            const chatBox = document.getElementById('chat-box');
+            const userMsg = document.createElement('div');
+            userMsg.textContent = "You: " + msg;
+            chatBox.appendChild(userMsg);
+
+            // Send message to Flask server
+            fetch('/get', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'msg=' + encodeURIComponent(msg)
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Display bot's response
+                const botMsg = document.createElement('div');
+                botMsg.textContent = "MEDIBOT: " + data;
+                chatBox.appendChild(botMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => console.error('Error:', error));
+
+            // Clear input field
+            document.getElementById('user-input').value = "";
+        });
+    </script>
+</body>
+</html>
