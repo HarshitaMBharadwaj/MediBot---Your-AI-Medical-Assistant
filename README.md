@@ -12,6 +12,8 @@ MEDIBOT employs the LLaMA-2-7b model to process user inputs and retrieve relevan
 4. **Indexing**: The embeddings are stored in a Pinecone vector database for quick retrieval.
 5. **Question Answering**: When a user submits a query, MEDIBOT retrieves relevant text chunks based on similarity and formulates a concise answer using the LLaMA model.
 
+![ss](Screenshot 2025-02-12 140307.png)
+
 ## Features
 - **Interactive Chat Interface**: Users can easily interact with the chatbot through a user-friendly web interface.
 - **Semantic Search**: MEDIBOT utilizes embeddings to perform similarity searches on the medical data, ensuring accurate results.
