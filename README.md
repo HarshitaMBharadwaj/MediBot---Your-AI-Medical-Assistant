@@ -12,7 +12,7 @@ MEDIBOT employs the LLaMA-2-7b model to process user inputs and retrieve relevan
 4. **Indexing**: The embeddings are stored in a Pinecone vector database for quick retrieval.
 5. **Question Answering**: When a user submits a query, MEDIBOT retrieves relevant text chunks based on similarity and formulates a concise answer using the LLaMA model.
 
-https://github.com/HarshitaMBharadwaj/MediBot---Your-AI-Medical-Assistant/blob/main/Screenshot%202025-02-12%20140307.png
+
 ![ss](P1.png)
 
 ## Features
